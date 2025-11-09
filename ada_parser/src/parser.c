@@ -42,12 +42,12 @@ void parser_free(Parser *parser) {
     }
 }
 
-// Forward declarations
+// Declarações das funções de parsing
 static ASTNode* parse_expression(Parser *parser);
 static ASTNode* parse_statement(Parser *parser);
 static ASTNode* parse_block(Parser *parser);
 
-// Parse primary expression
+// Parse expressão primária (números, identificadores, parênteses, Put_Line, NOT)
 static ASTNode* parse_primary(Parser *parser) {
     Token *token = parser->current_token;
 
@@ -98,7 +98,7 @@ static ASTNode* parse_primary(Parser *parser) {
     return NULL;
 }
 
-// Parse multiplicative expression (* /)
+// Parse expressão multiplicativa (*, /)
 static ASTNode* parse_multiplicative(Parser *parser) {
     ASTNode *left = parse_primary(parser);
 
@@ -114,7 +114,7 @@ static ASTNode* parse_multiplicative(Parser *parser) {
     return left;
 }
 
-// Parse additive expression (+ -)
+// Parse expressão aditiva (+, -)
 static ASTNode* parse_additive(Parser *parser) {
     ASTNode *left = parse_multiplicative(parser);
 
@@ -130,7 +130,7 @@ static ASTNode* parse_additive(Parser *parser) {
     return left;
 }
 
-// Parse relational expression (< <= > >= = /=)
+// Parse expressão relacional (<, <=, >, >=, =, /=)
 static ASTNode* parse_relational(Parser *parser) {
     ASTNode *left = parse_additive(parser);
 
@@ -150,7 +150,7 @@ static ASTNode* parse_relational(Parser *parser) {
     return left;
 }
 
-// Parse logical AND expression
+// Parse expressão lógica AND
 static ASTNode* parse_and(Parser *parser) {
     ASTNode *left = parse_relational(parser);
 
@@ -163,7 +163,7 @@ static ASTNode* parse_and(Parser *parser) {
     return left;
 }
 
-// Parse logical OR expression
+// Parse expressão lógica OR
 static ASTNode* parse_or(Parser *parser) {
     ASTNode *left = parse_and(parser);
 
@@ -176,12 +176,12 @@ static ASTNode* parse_or(Parser *parser) {
     return left;
 }
 
-// Parse expression
+// Parse expressão
 static ASTNode* parse_expression(Parser *parser) {
     return parse_or(parser);
 }
 
-// Parse assignment statement
+// Parse declaração de atribuição
 static ASTNode* parse_assignment(Parser *parser) {
     char *identifier = strdup(parser->current_token->value);
     expect(parser, TOKEN_IDENTIFIER);
@@ -194,7 +194,7 @@ static ASTNode* parse_assignment(Parser *parser) {
     return node;
 }
 
-// Parse if statement
+// Parse declaração if
 static ASTNode* parse_if(Parser *parser) {
     expect(parser, TOKEN_IF);
     ASTNode *condition = parse_expression(parser);
@@ -230,7 +230,7 @@ static ASTNode* parse_while(Parser *parser) {
     return ast_create_while(condition, body);
 }
 
-// Parse Put_Line statement
+// Parse declaração Put_Line
 static ASTNode* parse_put_line(Parser *parser) {
     expect(parser, TOKEN_PUT_LINE);
     expect(parser, TOKEN_LPAREN);
@@ -241,7 +241,7 @@ static ASTNode* parse_put_line(Parser *parser) {
     return ast_create_put_line(expr);
 }
 
-// Parse Get_Line statement
+// Parse declaração Get_Line
 static ASTNode* parse_get_line(Parser *parser) {
     expect(parser, TOKEN_GET_LINE);
     expect(parser, TOKEN_LPAREN);
@@ -255,7 +255,7 @@ static ASTNode* parse_get_line(Parser *parser) {
     return node;
 }
 
-// Parse statement
+// Parse declaração (assignment, if, while, put_line, get_line)
 static ASTNode* parse_statement(Parser *parser) {
     Token *token = parser->current_token;
 
@@ -283,7 +283,7 @@ static ASTNode* parse_statement(Parser *parser) {
     return NULL;
 }
 
-// Parse block (sequence of statements)
+// Parse block de declarações
 static ASTNode* parse_block(Parser *parser) {
     ASTNode **statements = NULL;
     int count = 0;
@@ -306,7 +306,7 @@ static ASTNode* parse_block(Parser *parser) {
     return ast_create_block(statements, count);
 }
 
-// Parse procedure
+// Parse procedimento principal
 static ASTNode* parse_procedure(Parser *parser) {
     expect(parser, TOKEN_PROCEDURE);
 
@@ -320,7 +320,7 @@ static ASTNode* parse_procedure(Parser *parser) {
 
     expect(parser, TOKEN_END);
 
-    // Optional procedure name after END
+    // Opcionalmente, o nome do procedimento pode ser repetido
     if (parser->current_token->type == TOKEN_IDENTIFIER) {
         advance(parser);
     }
@@ -332,7 +332,7 @@ static ASTNode* parse_procedure(Parser *parser) {
     return node;
 }
 
-// Parse program
+// Parse programa completo
 ASTNode* parser_parse(Parser *parser) {
     ASTNode *procedure = parse_procedure(parser);
 

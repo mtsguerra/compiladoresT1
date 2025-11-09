@@ -1,4 +1,4 @@
--- Teste 15: Teste de stress com múltiplas operações
+-- Teste de múltiplas operações em uma única procedure
 procedure StressTest is
 begin
   -- Múltiplas variáveis

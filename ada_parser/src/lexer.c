@@ -55,7 +55,7 @@ static void skip_whitespace(Lexer *lexer) {
 }
 
 static void skip_comment(Lexer *lexer) {
-    // Ada comments start with --
+    // Comentários começam com --
     if (lexer->current_char == '-' && peek(lexer, 1) == '-') {
         while (lexer->current_char != '\0' && lexer->current_char != '\n') {
             advance(lexer);
@@ -98,14 +98,14 @@ static Token* read_identifier(Lexer *lexer) {
     }
     buffer[i] = '\0';
 
-    // Convert to uppercase for case-insensitive keyword matching
+    // Converte para maiúsculas, evitando erros por maiúsculas/minúsculas
     char upper_buffer[256];
     for (int j = 0; buffer[j]; j++) {
         upper_buffer[j] = toupper(buffer[j]);
     }
     upper_buffer[i] = '\0';
 
-    // Check for keywords
+    // Checa palavras-chave
     if (strcmp(upper_buffer, "PROCEDURE") == 0) return create_token(TOKEN_PROCEDURE, buffer, lexer->line, start_col);
     if (strcmp(upper_buffer, "IS") == 0) return create_token(TOKEN_IS, buffer, lexer->line, start_col);
     if (strcmp(upper_buffer, "BEGIN") == 0) return create_token(TOKEN_BEGIN, buffer, lexer->line, start_col);
@@ -129,7 +129,7 @@ static Token* read_string(Lexer *lexer) {
     char buffer[1024];
     int i = 0;
 
-    advance(lexer); // skip opening quote
+    advance(lexer); // pula abertura "
 
     while (lexer->current_char != '\0' && lexer->current_char != '"') {
         buffer[i++] = lexer->current_char;
@@ -137,7 +137,7 @@ static Token* read_string(Lexer *lexer) {
     }
 
     if (lexer->current_char == '"') {
-        advance(lexer); // skip closing quote
+        advance(lexer); // pula fechamento "
     }
 
     buffer[i] = '\0';
@@ -170,7 +170,7 @@ Token* lexer_next_token(Lexer *lexer) {
 
         int col = lexer->column;
 
-        // Two-character operators
+        // Caracteres >= dois
         if (lexer->current_char == ':' && peek(lexer, 1) == '=') {
             advance(lexer);
             advance(lexer);
@@ -195,7 +195,7 @@ Token* lexer_next_token(Lexer *lexer) {
             return create_token(TOKEN_GREATER_EQUAL, ">=", lexer->line, col);
         }
 
-        // Single-character tokens
+        // Caracteres únicos
         char current = lexer->current_char;
         advance(lexer);
 

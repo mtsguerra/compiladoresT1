@@ -1,4 +1,4 @@
--- Teste: Expressões aritméticas complexas com precedência
+-- Teste de aritmética complexa
 procedure ExpressoesComplexas is
 begin
   resultado1 := 2 + 3 * 4;

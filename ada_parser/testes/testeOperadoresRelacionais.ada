@@ -1,4 +1,4 @@
--- Teste: Todos os operadores relacionais
+-- Teste de operadores relacionais
 procedure OperadoresRelacionais is
 begin
   a := 10;

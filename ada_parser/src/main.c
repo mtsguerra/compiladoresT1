@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
     Lexer *lexer = lexer_create(source);
     Token *token;
 
-    // Show all tokens
+    // Imprimir todos os tokens
     Lexer *lexer_copy = lexer_create(source);
     while ((token = lexer_next_token(lexer_copy))->type != TOKEN_EOF) {
         printf("%-15s : %s\n", token_type_to_string(token->type), token->value);
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     printf("\n=== Abstract Syntax Tree ===\n");
     ast_print(ast, 0);
 
-    // Cleanup
+    // Liberar memória
     ast_free(ast);
     parser_free(parser);
     lexer_free(lexer);

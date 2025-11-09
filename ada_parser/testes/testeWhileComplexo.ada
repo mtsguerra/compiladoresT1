@@ -1,4 +1,4 @@
--- Teste: Loops while aninhados
+-- Teste de um while aninhado
 procedure WhileAninhado is
 begin
   i := 0;

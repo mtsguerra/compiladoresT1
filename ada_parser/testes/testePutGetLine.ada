@@ -1,4 +1,4 @@
--- Teste: Operações de I/O (Put_Line e Get_Line)
+-- Teste de operações de entrada e saída com Get_Line e Put_Line
 procedure IOCompleto is
 begin
   Put_Line("Digite seu nome:");

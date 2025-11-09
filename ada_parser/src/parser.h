@@ -9,7 +9,7 @@ typedef struct {
     Token *current_token;
 } Parser;
 
-// Function prototypes
+// Protótipos das funções
 Parser* parser_create(Lexer *lexer);
 void parser_free(Parser *parser);
 ASTNode* parser_parse(Parser *parser);

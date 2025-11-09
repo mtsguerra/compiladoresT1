@@ -1,4 +1,4 @@
--- Teste: Estrutura if-then simples (sem else)
+-- Teste de uma estrutura if simples
 procedure IfSimples is
 begin
   x := 15;

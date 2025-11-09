@@ -1,4 +1,4 @@
--- Teste: Estrutura if-then-else completa
+-- Teste de uma estrutura if-else
 procedure IfElse is
 begin
   idade := 18;

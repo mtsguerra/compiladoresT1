@@ -1,4 +1,4 @@
--- Teste: Atribuições básicas
+-- Teste de atribuições básicas
 procedure Basico is
 begin
   x := 10;

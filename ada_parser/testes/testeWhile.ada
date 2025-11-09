@@ -1,4 +1,4 @@
--- Teste: Loop while simples
+-- Teste de while simples
 procedure WhileSimples is
 begin
   contador := 0;

@@ -1,4 +1,4 @@
--- Teste: Manipulação de strings
+-- Teste de strings
 procedure Strings is
 begin
   Put_Line("Ola, mundo!");

@@ -1,4 +1,4 @@
--- Teste: Operadores lógicos (and, or, not)
+-- Teste de operadores AND OR e NOT
 procedure OperadoresLogicos is
 begin
   x := 15;

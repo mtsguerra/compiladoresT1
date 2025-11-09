@@ -1,4 +1,4 @@
--- Teste: If-then-else aninhados
+-- Teste de um if aninhado
 procedure IfAninhado is
 begin
   nota := 85;

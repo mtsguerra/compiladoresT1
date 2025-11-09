@@ -6,9 +6,9 @@
 #include <string.h>
 #include <ctype.h>
 
-// Token types
+// Tipos de tokens
 typedef enum {
-    // Keywords
+    // Palavras-chaves da linguagem
     TOKEN_PROCEDURE,
     TOKEN_IS,
     TOKEN_BEGIN,
@@ -21,12 +21,12 @@ typedef enum {
     TOKEN_PUT_LINE,
     TOKEN_GET_LINE,
 
-    // Identifiers and literals
+    // Indentificadores e literais
     TOKEN_IDENTIFIER,
     TOKEN_INTEGER,
     TOKEN_STRING,
 
-    // Operators
+    // Operadores e símbolos
     TOKEN_ASSIGN,       // :=
     TOKEN_PLUS,         // +
     TOKEN_MINUS,        // -
@@ -42,7 +42,7 @@ typedef enum {
     TOKEN_OR,
     TOKEN_NOT,
 
-    // Delimiters
+    // Delimitadores e pontuação
     TOKEN_LPAREN,       // (
     TOKEN_RPAREN,       // )
     TOKEN_SEMICOLON,    // ;
@@ -68,7 +68,7 @@ typedef struct {
     char current_char;
 } Lexer;
 
-// Function prototypes
+// Protótipos das funções
 Lexer* lexer_create(const char *source);
 void lexer_free(Lexer *lexer);
 Token* lexer_next_token(Lexer *lexer);

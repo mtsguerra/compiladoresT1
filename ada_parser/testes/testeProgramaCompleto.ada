@@ -1,4 +1,4 @@
--- Teste 14: Programa completo com todas as funcionalidades
+-- Teste de um programa completo com entrada, processamento e saída
 procedure ProgramaCompleto is
 begin
   -- Inicialização

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// AST Node Types
+// AST, tipos de nós
 typedef enum {
     AST_PROGRAM,
     AST_PROCEDURE,
@@ -24,24 +24,24 @@ typedef enum {
 typedef struct ASTNode {
     ASTNodeType type;
     union {
-        // Program
+        // Programa
         struct {
             struct ASTNode *procedure;
         } program;
 
-        // Procedure
+        // Procedimento
         struct {
             char *name;
             struct ASTNode *block;
         } procedure;
 
-        // Block (list of statements)
+        // Block, lista de statements
         struct {
             struct ASTNode **statements;
             int count;
         } block;
 
-        // Assignment: identifier := expression
+        // Atribuição: identificador recebe expressão
         struct {
             char *identifier;
             struct ASTNode *expression;
@@ -51,7 +51,7 @@ typedef struct ASTNode {
         struct {
             struct ASTNode *condition;
             struct ASTNode *then_block;
-            struct ASTNode *else_block; // can be NULL
+            struct ASTNode *else_block; // possivelmente nulo
         } if_stmt;
 
         // While loop
@@ -60,45 +60,47 @@ typedef struct ASTNode {
             struct ASTNode *body;
         } while_stmt;
 
-        // Put_Line (output)
+        // Put_Line, output
         struct {
             struct ASTNode *expression;
         } put_line;
 
-        // Get_Line (input)
+        // Get_Line, input
         struct {
             char *identifier;
         } get_line;
 
-        // Binary operation
+        // Operação binária
         struct {
             char *operator;
             struct ASTNode *left;
             struct ASTNode *right;
         } binary_op;
 
-        // Unary operation
+        // Operação unária
         struct {
             char *operator;
             struct ASTNode *operand;
         } unary_op;
 
-        // Literals
+        // Literais
         struct {
             int value;
         } integer;
 
+        // String literal
         struct {
             char *value;
         } string;
 
+        // Identificador
         struct {
             char *name;
         } identifier;
     } data;
 } ASTNode;
 
-// Function prototypes
+// Protótipos dos construtores
 ASTNode* ast_create_program(ASTNode *procedure);
 ASTNode* ast_create_procedure(const char *name, ASTNode *block);
 ASTNode* ast_create_block(ASTNode **statements, int count);
@@ -112,6 +114,8 @@ ASTNode* ast_create_unary_op(const char *operator, ASTNode *operand);
 ASTNode* ast_create_integer(int value);
 ASTNode* ast_create_string(const char *value);
 ASTNode* ast_create_identifier(const char *name);
+
+// Auxiliares
 void ast_free(ASTNode *node);
 void ast_print(ASTNode *node, int indent);
 

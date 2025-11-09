@@ -1,4 +1,4 @@
--- Teste: Operações aritméticas simples
+-- Teste de aritmética básica
 procedure Aritmetica is
 begin
   soma := 5 + 3;

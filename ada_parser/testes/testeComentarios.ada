@@ -1,4 +1,4 @@
--- Teste: Comentários em diferentes posições
+-- Teste de comentários em várias posições
 procedure Comentarios is
 begin
   -- Comentário no início
