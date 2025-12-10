@@ -1,0 +1,17 @@
+# Build artifacts
+*.o
+*.out
+ada_parser/src/ada_parser
+build/
+output.asm
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include "parser.h"
 #include <stdio.h>
 
