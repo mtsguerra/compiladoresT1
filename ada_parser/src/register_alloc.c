@@ -35,8 +35,10 @@ const char* reg_alloc_acquire(RegisterAllocator *alloc) {
         }
     }
     
-    // Se não houver registrador disponível, retornar NULL
-    // (em uma implementação completa, faria spill para a pilha)
+    // Se não houver registrador disponível, reportar erro
+    // Uma implementação completa implementaria register spilling
+    fprintf(stderr, "Error: No available registers - expression too complex\n");
+    fprintf(stderr, "       Simplify your expressions or implement register spilling\n");
     return NULL;
 }
 

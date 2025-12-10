@@ -140,8 +140,9 @@ void semantic_check_statement(ASTNode *node, SemanticContext *ctx) {
             SymbolType expr_type = semantic_check_expression(node->data.assignment.expression, ctx);
             
             if (!symbol) {
-                // Declaração implícita - variáveis não declaradas são assumidas como inteiros
-                symbol_table_insert(ctx->current_scope, var_name, expr_type);
+                // Declaração implícita - usar tipo da expressão, ou INTEGER se desconhecido
+                SymbolType var_type = (expr_type != SYMBOL_UNKNOWN) ? expr_type : SYMBOL_INTEGER;
+                symbol_table_insert(ctx->current_scope, var_name, var_type);
             } else {
                 // Verificar compatibilidade de tipos
                 if (symbol->type != expr_type && expr_type != SYMBOL_UNKNOWN) {

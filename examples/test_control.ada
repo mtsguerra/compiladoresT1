@@ -1,4 +1,6 @@
 -- Test control structures
+-- Note: This is a simplified Ada subset that uses implicit variable declarations
+-- Variables are automatically declared on first use
 procedure TestControl is
 begin
     x := 15;

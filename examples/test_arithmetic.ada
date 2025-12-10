@@ -1,4 +1,6 @@
 -- Test arithmetic operations
+-- Note: This is a simplified Ada subset that uses implicit variable declarations
+-- Variables are automatically declared on first use
 procedure TestArithmetic is
 begin
     a := 10;

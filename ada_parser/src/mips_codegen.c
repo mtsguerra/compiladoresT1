@@ -158,10 +158,13 @@ const char* mips_gen_expression(MIPSCodeGen *gen, ASTNode *expr) {
                 return NULL;
             }
             
-            // Precisamos mapear a string para seu label
-            // Por simplicidade, vamos usar um contador global
-            static int str_index = 0;
-            mips_emit(gen, "    la %s, str%d\n", reg, str_index++);
+            // Mapear a string para seu label usando o contador da estrutura
+            // Nota: Este é um approach simplificado. Uma implementação completa
+            // deveria manter um mapa de strings para labels
+            // Por agora, assumimos que as strings são processadas em ordem
+            static int current_str = 0;
+            mips_emit(gen, "    la %s, str%d\n", reg, current_str);
+            current_str++;
             return reg;
         }
             
