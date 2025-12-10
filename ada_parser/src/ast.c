@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include "ast.h"
 #include <stdio.h>
 

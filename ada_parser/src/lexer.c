@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include "lexer.h"
 
 Lexer* lexer_create(const char *source) {
